@@ -1,0 +1,7 @@
+###> symfony/framework-bundle ###
+/.env
+/.idea
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/vendor/
+/composer.lock
