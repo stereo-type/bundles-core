@@ -40,7 +40,7 @@ class UrlBuilder
         }
 
         if ($encoding) {
-            return $this->path . http_build_query($this->params);
+            return $this->path . '?' . http_build_query($this->params);
         }
 
         $query = implode(
