@@ -18,7 +18,7 @@ class UrlBuilder
     {
         $this->path = $path;
         foreach ($params as $key => $value) {
-            $this->addParam($key, $value);
+            $this->addParam((string)$key, (string)$value);
         }
     }
 
