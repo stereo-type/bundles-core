@@ -21,7 +21,7 @@ class AcademCityCoreBundle extends AbstractBundle
         /** @var ArrayNodeDefinition $root*/
         $root = $definition->rootNode();
         $root->children()
-                   ->arrayNode('core_bundle')
+                   ->arrayNode('academ_city_core')
                        ->children()
                            ->scalarNode('user_class')->end()
                        ->end()
@@ -33,6 +33,6 @@ class AcademCityCoreBundle extends AbstractBundle
     {
         $container
             ->parameters()
-            ->set('core_bundle.user_class', $config['user_class']);
+            ->set('academ_city_core.user_class', $config['user_class']);
     }
 }
