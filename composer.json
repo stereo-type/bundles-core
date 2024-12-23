@@ -1,6 +1,6 @@
 {
   "name": "academcity/core-bundle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "symfony-bundle",
   "minimum-stability": "stable",
   "stability": "stable",
