@@ -19,12 +19,13 @@ class CoreBundleExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $projectRoot = $container->getParameter('kernel.project_dir');
 
         // Сохраняем параметр в контейнере
         $container->setParameter('core_bundle.user_class', $config['user_class']);
 
         // Загружаем сервисы
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config/packages/academcity'));
+        $loader = new YamlFileLoader($container, new FileLocator($projectRoot.'/config/packages/academcity'));
         $loader->load('core_bundle.yaml');
     }
 }
