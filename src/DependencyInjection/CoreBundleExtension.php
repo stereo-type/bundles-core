@@ -24,7 +24,7 @@ class CoreBundleExtension extends Extension
         $container->setParameter('core_bundle.user_class', $config['user_class']);
 
         // Загружаем сервисы
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config/academcity'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config/packages/academcity'));
         $loader->load('core_bundle.yaml');
     }
 }
