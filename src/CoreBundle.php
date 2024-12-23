@@ -29,9 +29,16 @@ class CoreBundle extends AbstractBundle
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
+//        $container->import('../config/services.yaml');
+//
         $container
             ->parameters()
             ->set('core_bundle.user_class', $config['user_class']);
+
+//        $container->services()
+//                  ->get('acme_social.twitter_client')
+//                  ->arg(0, $config['twitter']['client_id'])
+//                  ->arg(1, $config['twitter']['client_secret'])
 
     }
 }
