@@ -67,7 +67,7 @@
         "branch": "main"
       },
       "bundles": {
-        "AcademCity\\CoreBundle\\CoreBundle": ["all"]
+        "AcademCity\\CoreBundle\\AcademCityCoreBundle": ["all"]
       }
     }
   },
