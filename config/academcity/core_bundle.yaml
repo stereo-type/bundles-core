@@ -1,0 +1,2 @@
+core_bundle:
+  user_class: App\Entity\User

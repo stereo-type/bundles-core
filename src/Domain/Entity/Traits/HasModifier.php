@@ -17,7 +17,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * */
 trait HasModifier
 {
-
     private ?UserInterface $user = null;
 
     public function __construct(?UserInterface $user)

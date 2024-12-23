@@ -46,7 +46,7 @@ class UrlBuilder
         $query = implode(
             '&',
             array_map(
-                static fn($key, $value) => $key . '=' . $value,
+                static fn ($key, $value) => $key . '=' . $value,
                 array_keys($this->params),
                 array_values($this->params)
             )
