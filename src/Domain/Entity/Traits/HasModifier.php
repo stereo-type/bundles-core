@@ -25,10 +25,10 @@ trait HasModifier
         $this->user = $user;
     }
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: '%core-bundle.user_class%')]
     private ?UserInterface $user_created = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: '%core-bundle.user_class%')]
     private ?UserInterface $user_modified = null;
 
     #[PrePersist, PreUpdate]
