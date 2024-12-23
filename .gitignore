@@ -1,7 +1,19 @@
 ###> symfony/framework-bundle ###
 /.env
 /.idea
-/.php-cs-fixer.cache
-/.phpunit.result.cache
 /vendor/
 /composer.lock
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

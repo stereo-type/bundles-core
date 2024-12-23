@@ -23,8 +23,11 @@
     "symfony/validator": "^7.1",
     "symfony/serializer": "^7.1",
     "symfony/property-access": "^7.1",
-    "symfony/serializer-pack": "^1.3",
-    "symfony/security-bundle": "^7.1"
+    "symfony/security-bundle": "^7.1",
+    "symfony/flex": "^2.4",
+    "phpdocumentor/reflection-docblock": "^5.6",
+    "phpstan/phpdoc-parser": "^2.0",
+    "symfony/property-info": "^7.1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
@@ -32,12 +35,13 @@
     "phpstan/phpstan": "^2.0",
     "friendsofphp/php-cs-fixer": "^3.64",
     "symfony/maker-bundle": "^1.61",
-    "symfony/test-pack": "^1.0",
     "phpunit/phpunit": "^11.4",
     "phpstan/phpstan-doctrine": "^2.0",
     "phpstan/phpstan-symfony": "^2.0",
     "phpstan/extension-installer": "^1.4",
-    "phpstan/phpstan-phpunit": "^2.0"
+    "phpstan/phpstan-phpunit": "^2.0",
+    "symfony/browser-kit": "^7.1",
+    "symfony/css-selector": "^7.1"
   },
   "autoload": {
     "psr-4": {
@@ -70,12 +74,17 @@
   },
   "scripts": {
     "test": "phpunit",
-    "cs-fix": "php-cs-fixer fix"
+    "cs-fix": "php-cs-fixer fix",
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
   },
   "config": {
     "allow-plugins": {
       "symfony/runtime": true,
-      "phpstan/extension-installer": true
+      "phpstan/extension-installer": true,
+      "symfony/flex": true
     }
   }
 }
