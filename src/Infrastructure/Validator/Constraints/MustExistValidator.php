@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    EntityExistValidator.php
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -43,7 +42,7 @@ class MustExistValidator extends ConstraintValidator
         if (!$entity) {
             $this->context->buildViolation($constraint->message)
                           ->setParameter('{{ entity }}', $constraint->entityClass)
-                          ->setParameter('{{ value }}', (string)$value)
+                          ->setParameter('{{ value }}', (string) $value)
                           ->addViolation();
         }
     }

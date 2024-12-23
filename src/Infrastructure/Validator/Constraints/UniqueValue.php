@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    ${FILE_NAME}
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -17,7 +16,7 @@ class UniqueValue extends \Symfony\Component\Validator\Constraint
 
     public string $message = 'Объект "{{ value }}" уже используется';
 
-    public function __construct(string $entityClass, string $field, string $message = null, mixed $options = null, ?array $groups = null, mixed $payload = null)
+    public function __construct(string $entityClass, string $field, ?string $message = null, mixed $options = null, ?array $groups = null, mixed $payload = null)
     {
         $this->entityClass = $entityClass;
         $this->field = $field;
@@ -31,6 +30,4 @@ class UniqueValue extends \Symfony\Component\Validator\Constraint
     {
         return ['entityClass'];
     }
-
-
 }

@@ -67,6 +67,4 @@ trait HasModifier
 
         return $this;
     }
-
-
 }

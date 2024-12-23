@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    NotBlankWithFieldName.php
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

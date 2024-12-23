@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    ${FILE_NAME}
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -17,9 +16,8 @@ class MustExist extends \Symfony\Component\Validator\Constraint
 
     public string $message = 'Объект "{{ entity }}" "{{ value }}" не существует';
 
-    public function __construct(string $entityClass, string $field = 'id', string $message = null, mixed $options = null, ?array $groups = null, mixed $payload = null)
+    public function __construct(string $entityClass, string $field = 'id', ?string $message = null, mixed $options = null, ?array $groups = null, mixed $payload = null)
     {
-
         if ($message) {
             $this->message = $message;
         }
@@ -32,6 +30,4 @@ class MustExist extends \Symfony\Component\Validator\Constraint
     {
         return ['entityClass'];
     }
-
-
 }

@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    UrlBuilder.php
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -18,7 +17,7 @@ class UrlBuilder
     {
         $this->path = $path;
         foreach ($params as $key => $value) {
-            $this->addParam((string)$key, (string)$value);
+            $this->addParam((string) $key, (string) $value);
         }
     }
 
@@ -30,27 +29,29 @@ class UrlBuilder
     public function addParam(string $key, string $value): self
     {
         $this->params[$key] = $value;
+
         return $this;
     }
 
-    public function out($encoding = true): string
+    public function out(bool $encoding = true): string
     {
         if (empty($this->params)) {
             return $this->path;
         }
 
         if ($encoding) {
-            return $this->path . '?' . http_build_query($this->params);
+            return $this->path.'?'.http_build_query($this->params);
         }
 
         $query = implode(
             '&',
             array_map(
-                static fn ($key, $value) => $key . '=' . $value,
+                static fn ($key, $value) => $key.'='.$value,
                 array_keys($this->params),
                 array_values($this->params)
             )
         );
-        return $this->path . '?' . $query;
+
+        return $this->path.'?'.$query;
     }
 }

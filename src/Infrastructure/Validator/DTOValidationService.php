@@ -44,7 +44,7 @@ readonly class DTOValidationService implements ValidatorDTOInterface
 
             if ($accessor->isReadable($dto, $propertyPath)) {
                 $propertyValue = $accessor->getValue($dto, $propertyPath);
-                if ($propertyValue !== null) {
+                if (null !== $propertyValue) {
                     $filtered->add($violation);
                 }
             }

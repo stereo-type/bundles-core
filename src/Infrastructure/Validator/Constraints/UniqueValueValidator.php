@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    UniqueValueValidator.php
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -42,7 +41,7 @@ class UniqueValueValidator extends ConstraintValidator
 
         $existingEntity = $repository->findOneBy([$constraint->field => $value]);
 
-        if ($existingEntity !== null) {
+        if (null !== $existingEntity) {
             // Если значение уже существует, добавляем ошибку
             $this->context->buildViolation($constraint->message)
                           ->setParameter('{{ value }}', $value)

@@ -5,7 +5,7 @@ namespace CoreBundle\Domain\Entity\Traits;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * "Стандартное поле" delete для Entity
+ * "Стандартное поле" delete для Entity.
  */
 trait DeletedEntityTrait
 {

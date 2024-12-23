@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    CommandTrait.php
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -9,12 +8,10 @@ declare(strict_types=1);
 
 namespace CoreBundle\Application\Command;
 
-use RuntimeException;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Throwable;
 
 trait CommandTrait
 {
@@ -38,7 +35,7 @@ trait CommandTrait
     protected function log(string $message, bool $time = true): void
     {
         if ($time) {
-            $message = '[' . $this->now() . '] ' . $message;
+            $message = '['.$this->now().'] '.$message;
         }
         $this->io->text($message);
     }
@@ -81,19 +78,19 @@ trait CommandTrait
     protected function start_log(): void
     {
         $this->_begin = microtime(true);
-        $this->section('[' . $this->now() . '] Start processing execute: ' . $this->name());
+        $this->section('['.$this->now().'] Start processing execute: '.$this->name());
     }
 
-    protected function error_log(Throwable $error): void
+    protected function error_log(\Throwable $error): void
     {
         $this->_interrupt = microtime(true);
-        $this->error('[' . $this->now() . '] Error after : ' . ($this->_interrupt - $this->_begin) . ' sec. Message: ' . $error->getMessage());
+        $this->error('['.$this->now().'] Error after : '.($this->_interrupt - $this->_begin).' sec. Message: '.$error->getMessage());
 
         $arguments = $this->input->getArguments();
         if (isset($arguments['debug'])) {
-            $message = PHP_EOL . 'File: ' . $error->getFile();
-            $message .= PHP_EOL . 'Line: ' . $error->getLine();
-            $message .= PHP_EOL . 'Trace: ' . $error->getTraceAsString();
+            $message = PHP_EOL.'File: '.$error->getFile();
+            $message .= PHP_EOL.'Line: '.$error->getLine();
+            $message .= PHP_EOL.'Trace: '.$error->getTraceAsString();
             $this->error($message);
         }
     }
@@ -101,7 +98,7 @@ trait CommandTrait
     protected function end_log(): void
     {
         $this->_end = microtime(true);
-        $this->success('[' . $this->now() . '] Finished processing. Time spend ' . ($this->_end - $this->_begin) . ' sec.');
+        $this->success('['.$this->now().'] Finished processing. Time spend '.($this->_end - $this->_begin).' sec.');
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output): void
@@ -115,18 +112,19 @@ trait CommandTrait
         $this->start_log();
         try {
             $result = $this->runCommand();
-            if ($result === Command::SUCCESS) {
+            if (Command::SUCCESS === $result) {
                 $this->end_log();
-            } elseif ($result === Command::INVALID) {
-                $this->error_log(new RuntimeException('Некорректные данные'));
-            } elseif ($result === Command::FAILURE) {
-                $this->error_log(new RuntimeException('Ошибка выполнения'));
+            } elseif (Command::INVALID === $result) {
+                $this->error_log(new \RuntimeException('Некорректные данные'));
+            } elseif (Command::FAILURE === $result) {
+                $this->error_log(new \RuntimeException('Ошибка выполнения'));
             }
+
             return $result;
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             $this->error_log($e);
+
             return Command::FAILURE;
         }
     }
-
 }

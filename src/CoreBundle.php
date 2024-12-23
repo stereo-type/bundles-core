@@ -18,5 +18,4 @@ class CoreBundle extends Bundle
     {
         return new CoreBundleExtension();
     }
-
 }
