@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoreBundle\Domain\Entity\Traits;
+namespace AcademCity\CoreBundleDomain\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\PrePersist;

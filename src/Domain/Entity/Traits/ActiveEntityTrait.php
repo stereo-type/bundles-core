@@ -1,6 +1,6 @@
 <?php
 
-namespace CoreBundle\Domain\Entity\Traits;
+namespace AcademCity\CoreBundleDomain\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 

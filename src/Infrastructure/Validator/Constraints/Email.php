@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace CoreBundle\Infrastructure\Validator\Constraints;
+namespace AcademCity\CoreBundleInfrastructure\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraints\Email as CoreEmail;
 use Symfony\Component\Validator\Constraints\EmailValidator;

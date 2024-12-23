@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoreBundle\Domain\Entity\Traits;
+namespace AcademCity\CoreBundleDomain\Entity\Traits;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

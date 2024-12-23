@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace CoreBundle\Application\DTO;
+namespace AcademCity\CoreBundleApplication\DTO;
 
 trait DTOTrait
 {

@@ -6,9 +6,9 @@
  */
 declare(strict_types=1);
 
-namespace CoreBundle\Infrastructure\Validator;
+namespace AcademCity\CoreBundleInfrastructure\Validator;
 
-use CoreBundle\Application\Service\Validator\ValidatorDTOInterface;
+use AcademCity\CoreBundleApplication\Service\Validator\ValidatorDTOInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
