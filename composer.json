@@ -56,9 +56,15 @@
     },
     "symfony": {
       "allow-contrib": true,
-      "recipe": "config/recipes",
+      "recipe": {
+        "repo": "github.com/symfony/recipes-contrib",
+        "branch": "main"
+      },
       "bundles": {
         "CoreBundle\\CoreBundle": ["all"]
+      },
+      "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
       }
     }
   },
