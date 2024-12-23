@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundleApplication\Service\Validator;
+namespace AcademCity\CoreBundle\Application\Service\Validator;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 

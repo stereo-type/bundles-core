@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundleInfrastructure\Validator\Constraints;
+namespace AcademCity\CoreBundle\Infrastructure\Validator\Constraints;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
