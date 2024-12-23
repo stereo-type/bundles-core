@@ -8,14 +8,30 @@ declare(strict_types=1);
 
 namespace CoreBundle;
 
-use CoreBundle\DependencyInjection\CoreBundleExtension;
-use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class CoreBundle extends Bundle
+class CoreBundle extends AbstractBundle
 {
-    public function getContainerExtension(): ?ExtensionInterface
+    public function configure(DefinitionConfigurator $definition): void
     {
-        return new CoreBundleExtension();
+        $definition->rootNode()
+                   ->children()
+                        ->arrayNode('core_bundle')
+                            ->children()
+                                ->scalarNode('user_class')->end()
+                            ->end()
+                        ->end()
+                   ->end();
+    }
+
+    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
+    {
+        $container
+            ->parameters()
+            ->set('core_bundle.user_class', $config['user_class']);
+
     }
 }
