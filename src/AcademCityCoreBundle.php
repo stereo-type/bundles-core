@@ -20,13 +20,10 @@ class AcademCityCoreBundle extends AbstractBundle
     {
         /** @var ArrayNodeDefinition $root*/
         $root = $definition->rootNode();
-        $root->children()
-                   ->arrayNode('academ_city_core')
-                       ->children()
-                           ->scalarNode('user_class')->end()
-                       ->end()
-                   ->end()
-              ->end();
+        $root
+            ->children()
+                ->scalarNode('user_class')->end()
+            ->end();
     }
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
