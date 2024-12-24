@@ -19,12 +19,12 @@ class AcademCityCoreBundle extends AbstractBundle
 {
     private const PERMISSIONS_MASK = 0755;
 
-    public function boot(): void
+    public function build(ContainerBuilder $container)
     {
-        parent::boot();
+        parent::build($container);
         $filesystem = new Filesystem();
 
-        $projectRoot = $this->container->getParameter('kernel.project_dir');
+        $projectRoot = $container->getParameter('kernel.project_dir');
         $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
         $filename = 'academcity_core.yaml';
         $projectConfigDir = $projectRoot . $subDir;
