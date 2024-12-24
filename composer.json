@@ -69,7 +69,6 @@
       "bundles": {
         "AcademCity\\CoreBundle\\AcademCityCoreBundle": ["all"]
       },
-      "root-recipes-path": "./.symfony/recipes"
     }
   },
   "scripts": {
