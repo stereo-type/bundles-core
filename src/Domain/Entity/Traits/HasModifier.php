@@ -24,10 +24,10 @@ trait HasModifier
         $this->user = $user;
     }
 
-    #[ORM\ManyToOne(targetEntity: '%core-bundle.user_class%')]
+    #[ORM\ManyToOne(targetEntity: '%academ_city_core.user_class%')]
     private ?UserInterface $user_created = null;
 
-    #[ORM\ManyToOne(targetEntity: '%core-bundle.user_class%')]
+    #[ORM\ManyToOne(targetEntity: 'academ_city_core.user_class%')]
     private ?UserInterface $user_modified = null;
 
     #[PrePersist, PreUpdate]

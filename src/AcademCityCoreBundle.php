@@ -25,11 +25,11 @@ class AcademCityCoreBundle extends AbstractBundle
         $filesystem = new Filesystem();
 
         $projectRoot = $container->getParameter('kernel.project_dir');
-        $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
+        $subDir = DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'packages';
         $filename = 'academcity_core.yaml';
-        $projectConfigDir = $projectRoot . $subDir;
-        $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
-        $bundleConfigFile = (__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages' . DIRECTORY_SEPARATOR . $filename);
+        $projectConfigDir = $projectRoot.$subDir;
+        $targetConfigFile = $projectConfigDir.DIRECTORY_SEPARATOR.$filename;
+        $bundleConfigFile = (__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'packages'.DIRECTORY_SEPARATOR.$filename);
 
         if (!$filesystem->exists($projectConfigDir)) {
             $filesystem->mkdir($projectConfigDir, self::PERMISSIONS_MASK);
