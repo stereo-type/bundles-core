@@ -42,6 +42,7 @@ class AcademCityCoreBundle extends AbstractBundle
 
     public function configure(DefinitionConfigurator $definition): void
     {
+        $definition->import(__DIR__ . '/../config/services.yaml');
         /** @var ArrayNodeDefinition $root */
         $root = $definition->rootNode();
         $root
