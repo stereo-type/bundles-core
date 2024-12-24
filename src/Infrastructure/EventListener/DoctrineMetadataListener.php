@@ -46,7 +46,7 @@ class DoctrineMetadataListener
                     ];
 
                     $metadata->associationMappings[$field]['joinColumns'] = [$joinColumn];
-                    $metadata->table['indexes']['IDX_' . strtoupper(md5($fieldName))] = ['columns' => [$fieldName]];
+                    $metadata->table['indexes']['IDX_' . strtoupper(md5($entityClass . $fieldName))] = ['columns' => [$fieldName]];
                 }
             }
         }
