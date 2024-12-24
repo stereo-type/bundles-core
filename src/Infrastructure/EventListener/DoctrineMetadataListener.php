@@ -28,7 +28,7 @@ class DoctrineMetadataListener
 
         if (in_array(HasModifier::class, class_uses($entityClass), true)) {
             foreach ($metadata->associationMappings as $field => $mapping) {
-                if ($mapping['fieldName'] === 'user_modified') {
+                if ($mapping['fieldName'] === 'user_modified' || $mapping['fieldName'] === 'user_created') {
                     $object = $metadata->associationMappings[$field];
                     $class = get_class($object);
                     $newMapping = new $class(
