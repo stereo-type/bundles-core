@@ -21,5 +21,8 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    AcademCity\CoreBundle\Infrastructure\EventListener\DoctrineMetadataListener:
+        arguments:
+            $userClass: '%academ_city_core_bundle.user_class%'
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
