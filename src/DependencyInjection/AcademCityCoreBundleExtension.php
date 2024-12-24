@@ -11,7 +11,6 @@ namespace AcademCity\CoreBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Filesystem\Filesystem;
 
 class AcademCityCoreBundleExtension extends Extension
@@ -25,7 +24,7 @@ class AcademCityCoreBundleExtension extends Extension
 
         $projectRoot = $container->getParameter('kernel.project_dir');
         $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
-        $filename = 'academcity_core.yaml';
+        $filename = 'academ_city_core_bundle.yaml';
         $projectConfigDir = $projectRoot . $subDir;
         $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
         $bundleConfigFile = (__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages' . DIRECTORY_SEPARATOR . $filename);
