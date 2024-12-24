@@ -19,7 +19,7 @@ class AcademCityCoreBundleExtension extends Extension
 
     public function load(array $configs, ContainerBuilder $container): void
     {
-
+        echo "Loading AcademCityCoreBundleExtension...\n";
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
@@ -28,5 +28,4 @@ class AcademCityCoreBundleExtension extends Extension
 
         $container->setParameter('academ_city_core_bundle.user_class', $config['user_class']);
     }
-
 }

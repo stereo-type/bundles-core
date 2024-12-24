@@ -19,15 +19,14 @@ class AcademCityCoreCompilerPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container): void
     {
+        echo "Processing AcademCityCoreCompilerPass...\n";
         $filesystem = new Filesystem();
-
         $projectRoot = $container->getParameter('kernel.project_dir');
         $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
         $filename = 'academ_city_core_bundle.yaml';
         $projectConfigDir = $projectRoot . $subDir;
         $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
         $bundleConfigFile = (__DIR__ . '/../Resources' . $subDir . DIRECTORY_SEPARATOR . $filename);
-
         if (!$filesystem->exists($projectConfigDir)) {
             $filesystem->mkdir($projectConfigDir, self::PERMISSIONS_MASK);
         }
