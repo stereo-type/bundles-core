@@ -11,6 +11,7 @@ namespace AcademCity\CoreBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Filesystem\Filesystem;
 
 class AcademCityCoreBundleExtension extends Extension
@@ -40,11 +41,13 @@ class AcademCityCoreBundleExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-//        // Загружаем сервисы
-//        $loader = new YamlFileLoader($container, new FileLocator($projectRoot.'/config/packages/academcity'));
-//        $loader->load('core_bundle.yaml');
-//
-//        // Сохраняем параметр в контейнере
-//        $container->setParameter('core_bundle.user_class', $config['user_class']);
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
+        $loader->load('services.yaml');
+
+        $loader = new YamlFileLoader($container, new FileLocator($projectRoot.'/config/packages'));
+        $loader->load('academ_city_core_bundle.yaml');
+
+        $container->setParameter('core_bundle.user_class', $config['user_class']);
     }
+
 }

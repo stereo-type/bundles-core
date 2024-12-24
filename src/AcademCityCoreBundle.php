@@ -27,6 +27,11 @@ class AcademCityCoreBundle extends Bundle
         return new AcademCityCoreBundleExtension();
     }
 
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+    }
+
 
 //    private const PERMISSIONS_MASK = 0755;
 //
