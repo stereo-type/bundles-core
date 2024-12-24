@@ -53,6 +53,13 @@ class DoctrineMetadataListener
         $reflectionClass = new ReflectionClass($object);
         $reflectionProperty = $reflectionClass->getProperty($property);
         $reflectionProperty->setAccessible(true);
+
+        // Убираем ограничение `readonly`
+        $readonlyProperty = (new ReflectionProperty(ReflectionProperty::class, 'isReadOnly'));
+        $readonlyProperty->setAccessible(true);
+        $readonlyProperty->setValue($reflectionProperty, false);
+
+        // Устанавливаем значение
         $reflectionProperty->setValue($object, $value);
 
     }
