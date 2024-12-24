@@ -32,7 +32,6 @@ class AcademCityCoreBundleExtension extends Extension
 
         if (!$filesystem->exists($targetConfigFile)) {
             $filesystem->copy($bundleConfigFile, $targetConfigFile);
-            sleep(1);
         }
 
         $configuration = new Configuration();
