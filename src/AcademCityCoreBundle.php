@@ -12,7 +12,6 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
@@ -20,20 +19,17 @@ class AcademCityCoreBundle extends AbstractBundle
 {
     private const PERMISSIONS_MASK = 0755;
 
-
     public function boot(): void
     {
         parent::boot();
-
         $filesystem = new Filesystem();
-        $container = $this->container;
 
-        $projectRoot = $container->getParameter('kernel.project_dir');
-        $subDir = "/config/packages";
-        $filename = "academcity_core.yaml";
+        $projectRoot = $this->container->getParameter('kernel.project_dir');
+        $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
+        $filename = 'academcity_core.yaml';
         $projectConfigDir = $projectRoot . $subDir;
-        $targetConfigFile = $projectConfigDir . "/$filename";
-        $bundleConfigFile = __DIR__ . "/../Resources/config/packages/$filename";
+        $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
+        $bundleConfigFile = (__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages' . DIRECTORY_SEPARATOR . $filename);
 
         if (!$filesystem->exists($projectConfigDir)) {
             $filesystem->mkdir($projectConfigDir, self::PERMISSIONS_MASK);
@@ -46,11 +42,11 @@ class AcademCityCoreBundle extends AbstractBundle
 
     public function configure(DefinitionConfigurator $definition): void
     {
-        /** @var ArrayNodeDefinition $root*/
+        /** @var ArrayNodeDefinition $root */
         $root = $definition->rootNode();
         $root
             ->children()
-                ->scalarNode('user_class')->end()
+            ->scalarNode('user_class')->end()
             ->end();
     }
 
