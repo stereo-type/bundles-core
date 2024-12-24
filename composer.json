@@ -68,7 +68,7 @@
       },
       "bundles": {
         "AcademCity\\CoreBundle\\AcademCityCoreBundle": ["all"]
-      },
+      }
     }
   },
   "scripts": {
