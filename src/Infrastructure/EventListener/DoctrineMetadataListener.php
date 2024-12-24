@@ -8,8 +8,17 @@
 declare(strict_types=1);
 
 namespace AcademCity\CoreBundle\Infrastructure\EventListener;
+
 use AcademCity\CoreBundle\Domain\Entity\Traits\HasModifier;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Mapping\ManyToManyInverseSideMapping;
+use Doctrine\ORM\Mapping\ManyToManyOwningSideMapping;
+use Doctrine\ORM\Mapping\ManyToOneAssociationMapping;
+use Doctrine\ORM\Mapping\OneToManyAssociationMapping;
+use Doctrine\ORM\Mapping\OneToOneInverseSideMapping;
+use Doctrine\ORM\Mapping\OneToOneOwningSideMapping;
+use ReflectionClass;
+use ReflectionProperty;
 
 class DoctrineMetadataListener
 {
@@ -30,10 +39,21 @@ class DoctrineMetadataListener
             // Обновляем метаданные
             foreach ($metadata->associationMappings as $field => $mapping) {
                 if ($mapping['fieldName'] === 'user_modified') {
-                    dd($metadata->associationMappings[$field]);
-                    $metadata->associationMappings[$field]['targetEntity'] = $this->userClass;
+                    $this->setReadonlyProperty($metadata->associationMappings[$field], 'targetEntity', $this->userClass);
                 }
             }
         }
+    }
+
+    private function setReadonlyProperty(
+        object $object,
+        string $property,
+        mixed $value
+    ) {
+        $reflectionClass = new ReflectionClass($object);
+        $reflectionProperty = $reflectionClass->getProperty($property);
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($object, $value);
+
     }
 }
