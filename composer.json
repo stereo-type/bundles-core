@@ -62,10 +62,7 @@
     },
     "symfony": {
       "allow-contrib": true,
-      "recipe": {
-        "repo": "github.com/symfony/recipes-contrib",
-        "branch": "main"
-      },
+      "recipe": "config/recipes",
       "bundles": {
         "AcademCity\\CoreBundle\\AcademCityCoreBundle": ["all"]
       }
