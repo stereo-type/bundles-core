@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package    Configuration.php
  * @copyright  2024 Zhalayletdinov Vyacheslav evil_tut@mail.ru
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -24,13 +23,13 @@ class Configuration implements ConfigurationInterface
                 ->isRequired()
                 ->cannotBeEmpty()->end()
             ->end();
-//        $treeBuilder->getRootNode()
-//                    ->children()
-//                    ->scalarNode('user_class')
-//                    ->isRequired()
-//                    ->cannotBeEmpty()
-//                    ->end()
-//                    ->end();
+        //        $treeBuilder->getRootNode()
+        //                    ->children()
+        //                    ->scalarNode('user_class')
+        //                    ->isRequired()
+        //                    ->cannotBeEmpty()
+        //                    ->end()
+        //                    ->end();
 
         return $treeBuilder;
     }

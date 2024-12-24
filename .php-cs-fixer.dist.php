@@ -1,13 +1,21 @@
 <?php
 
-$finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__)
-    ->exclude('var')
-;
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 
-return (new PhpCsFixer\Config())
+$finder = Finder::create()
+                ->in(__DIR__)
+                ->exclude('vendor')
+                ->exclude('var')
+                ->exclude('node_modules');
+
+return (new Config())
+    ->setRiskyAllowed(true)
     ->setRules([
-        '@Symfony' => true,
+        'cast_spaces' => ['space' => 'none'],
+        'array_syntax' => ['syntax' => 'short'],
+        'no_unused_imports' => true,
+        'no_trailing_comma_in_singleline' => true,
+        '@PSR12' => true,
     ])
-    ->setFinder($finder)
-;
+    ->setFinder($finder);

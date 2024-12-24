@@ -9,15 +9,7 @@ declare(strict_types=1);
 namespace AcademCity\CoreBundle;
 
 use AcademCity\CoreBundle\DependencyInjection\AcademCityCoreBundleExtension;
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AcademCityCoreBundle extends Bundle
@@ -27,53 +19,4 @@ class AcademCityCoreBundle extends Bundle
         return new AcademCityCoreBundleExtension();
     }
 
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-    }
-
-
-//    private const PERMISSIONS_MASK = 0755;
-//
-//    /**
-//     * @return void
-//     */
-//    public function build(ContainerBuilder $container)
-//    {
-//        parent::build($container);
-//        $filesystem = new Filesystem();
-//
-//        $projectRoot = $container->getParameter('kernel.project_dir');
-//        $subDir = DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'packages';
-//        $filename = 'academcity_core.yaml';
-//        $projectConfigDir = $projectRoot.$subDir;
-//        $targetConfigFile = $projectConfigDir.DIRECTORY_SEPARATOR.$filename;
-//        $bundleConfigFile = (__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'packages'.DIRECTORY_SEPARATOR.$filename);
-//
-//        if (!$filesystem->exists($projectConfigDir)) {
-//            $filesystem->mkdir($projectConfigDir, self::PERMISSIONS_MASK);
-//        }
-//
-//        if (!$filesystem->exists($targetConfigFile)) {
-//            $filesystem->copy($bundleConfigFile, $targetConfigFile);
-//        }
-//    }
-//
-//    public function configure(DefinitionConfigurator $definition): void
-//    {
-//        $definition->import(__DIR__ . '/../config/services.yaml');
-//        /** @var ArrayNodeDefinition $root */
-//        $root = $definition->rootNode();
-//        $root
-//            ->children()
-//            ->scalarNode('user_class')->end()
-//            ->end();
-//    }
-//
-//    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
-//    {
-//        $container
-//            ->parameters()
-//            ->set('academ_city_core.user_class', $config['user_class']);
-//    }
 }
