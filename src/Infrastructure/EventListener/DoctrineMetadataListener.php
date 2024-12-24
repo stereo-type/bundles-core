@@ -28,7 +28,8 @@ class DoctrineMetadataListener
 
         if (in_array(HasModifier::class, class_uses($entityClass), true)) {
             foreach ($metadata->associationMappings as $field => $mapping) {
-                if ($mapping['fieldName'] === 'user_modified' || $mapping['fieldName'] === 'user_created') {
+                $fieldName = $mapping['fieldName'];
+                if ($fieldName === 'user_modified' || $fieldName === 'user_created') {
                     $association = $metadata->associationMappings[$field];
                     $class = get_class($association);
                     $newMapping = new $class(
@@ -38,16 +39,14 @@ class DoctrineMetadataListener
                     );
                     $metadata->associationMappings[$field] = $newMapping;
 
-                    $joinColumns = $association['joinColumns'] ?? [];
+                    $joinColumn = [
+                        'name' => $fieldName,
+                        'referencedColumnName' => 'id',
+                        'nullable' => true,
+                    ];
 
-                    foreach ($joinColumns as $joinColumn) {
-                        $columnName = $joinColumn['name'] ?? null;
-
-                        if ($columnName) {
-                            // Убедитесь, что индекс связан с колонкой
-                            $metadata->table['indexes']['IDX_' . strtoupper(md5($columnName))] = ['columns' => [$columnName]];
-                        }
-                    }
+                    $metadata->associationMappings[$field]['joinColumns'] = [$joinColumn];
+                    $metadata->table['indexes']['IDX_' . strtoupper(md5($fieldName))] = ['columns' => [$fieldName]];
                 }
             }
         }
