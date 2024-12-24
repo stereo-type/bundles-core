@@ -6,3 +6,5 @@ stan:
 
 fix:
 	vendor/bin/php-cs-fixer fix src && vendor/bin/php-cs-fixer fix tests
+
+clean: fix stan cache-clear

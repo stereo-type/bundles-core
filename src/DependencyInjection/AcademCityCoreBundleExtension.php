@@ -27,7 +27,7 @@ class AcademCityCoreBundleExtension extends Extension
         $filename = 'academ_city_core_bundle.yaml';
         $projectConfigDir = $projectRoot . $subDir;
         $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
-        $bundleConfigFile = (__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . $subDir . DIRECTORY_SEPARATOR . $filename);
+        $bundleConfigFile = (__DIR__ . '/../Resources' . $subDir . DIRECTORY_SEPARATOR . $filename);
 
         if (!$filesystem->exists($projectConfigDir)) {
             $filesystem->mkdir($projectConfigDir, self::PERMISSIONS_MASK);
