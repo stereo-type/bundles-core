@@ -30,6 +30,7 @@ class DoctrineMetadataListener
             // Обновляем метаданные
             foreach ($metadata->associationMappings as $field => $mapping) {
                 if ($mapping['fieldName'] === 'user_modified') {
+                    dd($metadata->associationMappings[$field]);
                     $metadata->associationMappings[$field]['targetEntity'] = $this->userClass;
                 }
             }
