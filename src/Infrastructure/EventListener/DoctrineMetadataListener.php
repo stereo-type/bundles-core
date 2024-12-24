@@ -26,19 +26,30 @@ class DoctrineMetadataListener
         $metadata = $args->getClassMetadata();
         $entityClass = $metadata->getName();
 
-//        if (in_array(HasModifier::class, class_uses($entityClass), true)) {
-//            foreach ($metadata->associationMappings as $field => $mapping) {
-//                if ($mapping['fieldName'] === 'user_modified' || $mapping['fieldName'] === 'user_created') {
-//                    $object = $metadata->associationMappings[$field];
-//                    $class = get_class($object);
-//                    $newMapping = new $class(
-//                        $object->fieldName,
-//                        $object->sourceEntity,
-//                        $this->userClass
-//                    );
-//                    $metadata->associationMappings[$field] = $newMapping;
-//                }
-//            }
-//        }
+        if (in_array(HasModifier::class, class_uses($entityClass), true)) {
+            foreach ($metadata->associationMappings as $field => $mapping) {
+                if ($mapping['fieldName'] === 'user_modified' || $mapping['fieldName'] === 'user_created') {
+                    $association = $metadata->associationMappings[$field];
+                    $class = get_class($association);
+                    $newMapping = new $class(
+                        $association->fieldName,
+                        $association->sourceEntity,
+                        $this->userClass
+                    );
+                    $metadata->associationMappings[$field] = $newMapping;
+
+                    $joinColumns = $association['joinColumns'] ?? [];
+
+                    foreach ($joinColumns as $joinColumn) {
+                        $columnName = $joinColumn['name'] ?? null;
+
+                        if ($columnName) {
+                            // Убедитесь, что индекс связан с колонкой
+                            $metadata->table['indexes']['IDX_' . strtoupper(md5($columnName))] = ['columns' => [$columnName]];
+                        }
+                    }
+                }
+            }
+        }
     }
 }
