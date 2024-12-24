@@ -19,9 +19,9 @@ class AcademCityCoreBundle extends AbstractBundle
 {
     private const PERMISSIONS_MASK = 0755;
 
-    public function boot(): void
+    public function build(ContainerBuilder $container)
     {
-        parent::boot();
+        parent::build($container);
         $filesystem = new Filesystem();
 
         $projectRoot = $this->container->getParameter('kernel.project_dir');
