@@ -25,11 +25,13 @@ trait HasModifier
     }
 
     /**Так не сработает, просто для наглядности, класс подставится в листнере src/Infrastructure/EventListener/DoctrineMetadataListener.php*/
-    #[ORM\ManyToOne(targetEntity: 'AcademCity\RoleModelBundle\Domain\Entity\Use')]
+    #[ORM\ManyToOne(targetEntity: '%academ_city_core.user_class%')]
+    #[ORM\JoinColumn(name: 'user_created', referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?UserInterface $user_created = null;
 
     /**Так не сработает, просто для наглядности, класс подставится в листнере src/Infrastructure/EventListener/DoctrineMetadataListener.php*/
     #[ORM\ManyToOne(targetEntity: '%academ_city_core.user_class%')]
+    #[ORM\JoinColumn(name: 'user_created', referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?UserInterface $user_modified = null;
 
     #[PrePersist, PreUpdate]
