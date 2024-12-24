@@ -23,13 +23,6 @@ class Configuration implements ConfigurationInterface
                 ->isRequired()
                 ->cannotBeEmpty()->end()
             ->end();
-        //        $treeBuilder->getRootNode()
-        //                    ->children()
-        //                    ->scalarNode('user_class')
-        //                    ->isRequired()
-        //                    ->cannotBeEmpty()
-        //                    ->end()
-        //                    ->end();
 
         return $treeBuilder;
     }
