@@ -11,14 +11,6 @@ namespace AcademCity\CoreBundle\Infrastructure\EventListener;
 
 use AcademCity\CoreBundle\Domain\Entity\Traits\HasModifier;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Doctrine\ORM\Mapping\ManyToManyInverseSideMapping;
-use Doctrine\ORM\Mapping\ManyToManyOwningSideMapping;
-use Doctrine\ORM\Mapping\ManyToOneAssociationMapping;
-use Doctrine\ORM\Mapping\OneToManyAssociationMapping;
-use Doctrine\ORM\Mapping\OneToOneInverseSideMapping;
-use Doctrine\ORM\Mapping\OneToOneOwningSideMapping;
-use ReflectionClass;
-use ReflectionProperty;
 
 class DoctrineMetadataListener
 {
@@ -34,33 +26,19 @@ class DoctrineMetadataListener
         $metadata = $args->getClassMetadata();
         $entityClass = $metadata->getName();
 
-        // Проверяем, использует ли класс трейт HasModifier
         if (in_array(HasModifier::class, class_uses($entityClass), true)) {
-            // Обновляем метаданные
             foreach ($metadata->associationMappings as $field => $mapping) {
                 if ($mapping['fieldName'] === 'user_modified') {
-                    $this->setReadonlyProperty($metadata->associationMappings[$field], 'targetEntity', $this->userClass);
+                    $object = $metadata->associationMappings[$field];
+                    $class = get_class($object);
+                    $newMapping = new $class(
+                        $object->fieldName,
+                        $object->sourceEntity,
+                        $this->userClass
+                    );
+                    $metadata->associationMappings[$field] = $newMapping;
                 }
             }
         }
-    }
-
-    private function setReadonlyProperty(
-        object $object,
-        string $property,
-        mixed $value
-    ) {
-        $reflectionClass = new ReflectionClass($object);
-        $reflectionProperty = $reflectionClass->getProperty($property);
-        $reflectionProperty->setAccessible(true);
-
-        // Убираем ограничение `readonly`
-        $readonlyProperty = (new ReflectionProperty(ReflectionProperty::class, 'isReadOnly'));
-        $readonlyProperty->setAccessible(true);
-        $readonlyProperty->setValue($reflectionProperty, false);
-
-        // Устанавливаем значение
-        $reflectionProperty->setValue($object, $value);
-
     }
 }
