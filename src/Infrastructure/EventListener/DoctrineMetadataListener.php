@@ -38,16 +38,16 @@ class DoctrineMetadataListener
                     );
                     $metadata->associationMappings[$field] = $newMapping;
 
-//                    $joinColumns = $association['joinColumns'] ?? [];
-//
-//                    foreach ($joinColumns as $joinColumn) {
-//                        $columnName = $joinColumn['name'] ?? null;
-//
-//                        if ($columnName) {
-//                            // Убедитесь, что индекс связан с колонкой
-//                            $metadata->table['indexes']['IDX_' . strtoupper(md5($columnName))] = ['columns' => [$columnName]];
-//                        }
-//                    }
+                    $joinColumns = $association['joinColumns'] ?? [];
+
+                    foreach ($joinColumns as $joinColumn) {
+                        $columnName = $joinColumn['name'] ?? null;
+
+                        if ($columnName) {
+                            // Убедитесь, что индекс связан с колонкой
+                            $metadata->table['indexes']['IDX_' . strtoupper(md5($columnName))] = ['columns' => [$columnName]];
+                        }
+                    }
                 }
             }
         }
