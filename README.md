@@ -18,9 +18,16 @@
         }
   ]
   ```
-- выполнить команду `composer require academcity/core_bundle`, желательно указать последнюю версию при установке, пример `composer require academcity/core_bundle 1.3.2`
+- выполнить команду `composer require academcity/core_bundle`, желательно указать последнюю версию при установке,
+  пример `composer require academcity/core_bundle 1.3.5`
+- отчистить кеш `php bin/console cache:clear`
 
+### 3. ISSUSES
 
+после установки бандла произойдет копирование config/packages/academ_city_core.yaml в основной проект,
+копирование видимо происходит ассинхронно, несмотря на вызов перед загрузкой конфигов, поэтому может быть получена
+ошибка ` The child config "user_class" under "academ_city_core" must be configured.`
+Повторное выполнение отчистки кеша решит проблему `php bin/console cache:clear`
 
 ### Команды
 
