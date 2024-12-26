@@ -20,10 +20,9 @@ class Configuration implements ConfigurationInterface
         $root
             ->children()
                 ->scalarNode('user_class')
-                ->isRequired()
-                ->cannotBeEmpty()->end()
+                    ->defaultValue('App\Entity\User')
+                ->end()
             ->end();
-
         return $treeBuilder;
     }
 }
