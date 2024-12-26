@@ -17,15 +17,16 @@ use Symfony\Component\Filesystem\Filesystem;
 class AcademCityCoreExtension extends Extension
 {
     private const PERMISSIONS_MASK = 0755;
+
     public function load(array $configs, ContainerBuilder $container): void
     {
         $filesystem = new Filesystem();
         $projectRoot = $container->getParameter('kernel.project_dir');
         $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
-        $filename = 'academ_city_core_bundle.yaml';
+        $filename = 'academ_city_core.yaml';
         $projectConfigDir = $projectRoot . $subDir;
         $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
-        $bundleConfigFile = (__DIR__ . '/../Resources' . $subDir . DIRECTORY_SEPARATOR . $filename);
+        $bundleConfigFile = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Resources' . $subDir . DIRECTORY_SEPARATOR . $filename;
         if (!$filesystem->exists($projectConfigDir)) {
             $filesystem->mkdir($projectConfigDir, self::PERMISSIONS_MASK);
         }
@@ -37,7 +38,7 @@ class AcademCityCoreExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
+        $loader = new YamlFileLoader($container, new FileLocator(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'config'));
         $loader->load('services.yaml');
 
         $container->setParameter('academ_city_core.user_class', $config['user_class']);

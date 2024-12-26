@@ -14,7 +14,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AcademCityCoreBundle extends Bundle
 {
-
     public function getContainerExtension(): ?ExtensionInterface
     {
         return new AcademCityCoreExtension();
