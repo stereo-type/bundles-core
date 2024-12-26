@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Filesystem\Filesystem;
 
-class AcademCityCoreBundleExtension extends Extension
+class AcademCityCoreExtension extends Extension
 {
     private const PERMISSIONS_MASK = 0755;
     public function load(array $configs, ContainerBuilder $container): void
@@ -40,6 +40,6 @@ class AcademCityCoreBundleExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $loader->load('services.yaml');
 
-        $container->setParameter('academ_city_core_bundle.user_class', $config['user_class']);
+        $container->setParameter('academ_city_core.user_class', $config['user_class']);
     }
 }

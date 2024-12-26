@@ -14,11 +14,11 @@
   "repositories": [
         {
             "type": "vcs",
-            "url": "https://gitlab.dev-u.ru/bundles/core_bundle.git"
+            "url": "https://oauth2:JRB8vueyHk5JnBfUjNsb@gitlab.dev-u.ru/bundles/core_bundle.git"
         }
   ]
   ```
-- выполнить команду `composer require academcity/core_bundle:dev-master`
+- выполнить команду `composer require academcity/core_bundle`, желательно указать последнюю версию при установке, пример `composer require academcity/core_bundle 1.3.2`
 
 
 

@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace AcademCity\CoreBundle;
 
-use AcademCity\CoreBundle\DependencyInjection\AcademCityCoreBundleExtension;
+use AcademCity\CoreBundle\DependencyInjection\AcademCityCoreExtension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -17,7 +17,7 @@ class AcademCityCoreBundle extends Bundle
 
     public function getContainerExtension(): ?ExtensionInterface
     {
-        return new AcademCityCoreBundleExtension();
+        return new AcademCityCoreExtension();
     }
 
 }
