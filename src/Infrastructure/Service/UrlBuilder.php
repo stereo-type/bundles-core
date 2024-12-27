@@ -15,6 +15,9 @@ class UrlBuilder
 
     public function __construct(string $path, array $params = [])
     {
+        if ($this->isAbsoluteUrl($path) && !str_contains($path, 'https://')) {
+            $path = 'https://' . parse_url($path, PHP_URL_HOST) . parse_url($path, PHP_URL_PATH);
+        }
         $this->path = $path;
         foreach ($params as $key => $value) {
             $this->addParam((string)$key, (string)$value);
@@ -53,5 +56,10 @@ class UrlBuilder
         );
 
         return $this->path.'?'.$query;
+    }
+
+    private function isAbsoluteUrl(string $url): bool
+    {
+        return (bool)parse_url($url, PHP_URL_HOST);
     }
 }
