@@ -60,6 +60,6 @@ class UrlBuilder
 
     private function isAbsoluteUrl(string $url): bool
     {
-        return (bool)parse_url($url, PHP_URL_HOST);
+        return preg_match('/^(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/', $url) || parse_url($url, PHP_URL_HOST);
     }
 }
