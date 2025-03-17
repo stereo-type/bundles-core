@@ -33,10 +33,10 @@ class UniqueValueValidator extends ConstraintValidator
             return;
         }
 
-        if (!is_string($value)) {
-            throw new UnexpectedValueException($value, 'string');
+        if (!is_string($value) && !is_numeric($value)) {
+            throw new UnexpectedValueException($value, 'string, number');
         }
-
+        $value = (string) $value;
         $repository = $this->entityManager->getRepository($constraint->entityClass);
 
         $existingEntity = $repository->findOneBy([$constraint->field => $value]);
