@@ -15,9 +15,9 @@ trait DTOTrait
         return get_object_vars($this);
     }
 
-    public static function fromArray(array $data): self
+    public static function fromArray(array $data): static
     {
-        $dto = new self();
+        $dto = new static();
 
         foreach ($data as $key => $value) {
             if (property_exists($dto, $key)) {
