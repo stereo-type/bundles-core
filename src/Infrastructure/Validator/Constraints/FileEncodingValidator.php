@@ -28,12 +28,9 @@ class FileEncodingValidator extends ConstraintValidator
 
         $filePath = $value->getRealPath();
 
-        // Определяем кодировку
-        $fileHandle = fopen($filePath, 'r');
-        $sampleData = fread($fileHandle, 1024);
-        fclose($fileHandle);
+        $content = file_get_contents($filePath);
 
-        $encoding = mb_detect_encoding($sampleData, ['UTF-8', 'Windows-1251', 'ISO-8859-1'], true);
+        $encoding = mb_detect_encoding($content, ['UTF-8', 'Windows-1251', 'ISO-8859-1'], true);
 
         if ($encoding !== $constraint->encoding) {
             $this->context->buildViolation($constraint->message)
