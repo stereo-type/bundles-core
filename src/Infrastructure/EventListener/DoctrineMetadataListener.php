@@ -12,6 +12,11 @@ namespace AcademCity\CoreBundle\Infrastructure\EventListener;
 use AcademCity\CoreBundle\Domain\Entity\Traits\HasModifier;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 
+/**
+ * Листнер для испольования трейта HasModifier
+ * в трейте описан интерфейс UserInterface, но доктрина с ним не умеет работать,
+ * по этому необходима простановка реальной связи в базе через класс $userClass
+ */
 class DoctrineMetadataListener
 {
     private string $userClass;

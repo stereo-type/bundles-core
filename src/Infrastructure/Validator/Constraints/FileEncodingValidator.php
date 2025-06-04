@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package    FileEncodingValidator.php
  * @copyright  2025 Zhalayletdinov Vyacheslav evil_tut@mail.ru
@@ -12,6 +13,7 @@ namespace AcademCity\CoreBundle\Infrastructure\Validator\Constraints;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class FileEncodingValidator extends ConstraintValidator
 {
@@ -20,10 +22,14 @@ class FileEncodingValidator extends ConstraintValidator
      *
      * @return void
      */
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$value instanceof UploadedFile) {
             return;
+        }
+
+        if (!$constraint instanceof FileEncoding) {
+            throw new UnexpectedTypeException($constraint, FileEncoding::class);
         }
 
         $filePath = $value->getRealPath();

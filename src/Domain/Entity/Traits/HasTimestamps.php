@@ -6,12 +6,9 @@ namespace AcademCity\CoreBundle\Domain\Entity\Traits;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\PrePersist;
-use Doctrine\ORM\Mapping\PreUpdate;
 
 /**Трейт для подключения к сущности и создания полей
  * $time_created и $time_modified
- * #[ORM\HasLifecycleCallbacks] прописать у класса сущности
  * */
 trait HasTimestamps
 {
@@ -21,14 +18,14 @@ trait HasTimestamps
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $time_modified = null;
 
-    #[PrePersist, PreUpdate]
+    /**Вызывается в TimeModifiedListener*/
     public function updateTimestamps(): void
     {
-        if (!isset($this->time_created)) {
-            $this->time_created = new \DateTime();
+        if (null === $this->getTimeCreated()) {
+            $this->setTimeCreated(new \DateTime());
         }
 
-        $this->time_modified = new \DateTime();
+        $this->setTimeModified(new \DateTime());
     }
 
     public function getTimeCreated(): ?\DateTimeInterface

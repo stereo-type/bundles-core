@@ -5,23 +5,29 @@ declare(strict_types=1);
 namespace AcademCity\CoreBundle\Domain\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\PrePersist;
-use Doctrine\ORM\Mapping\PreUpdate;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**Трейт для подключения к сущности и создания полей
  * $user_created и $user_modified
- * Накладывает ограничение применения - у конструктора сущности,
- * если он есть необходимо передавать пользователя
- * #[ORM\HasLifecycleCallbacks] прописать у класса сущности
  * */
 trait HasModifier
 {
-    private ?UserInterface $user = null;
+    private ?UserInterface $_user = null;
 
-    public function __construct(?UserInterface $user)
+    public function __construct()
     {
-        $this->user = $user;
+    }
+
+    public function setUser(?UserInterface $user): self
+    {
+        $this->_user = $user;
+
+        return $this;
+    }
+
+    public function getUser(): ?UserInterface
+    {
+        return $this->_user;
     }
 
     /**Так не сработает, просто для наглядности, класс подставится в листнере src/Infrastructure/EventListener/DoctrineMetadataListener.php*/
@@ -34,15 +40,17 @@ trait HasModifier
     #[ORM\JoinColumn(name: 'user_created', referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?UserInterface $user_modified = null;
 
-    #[PrePersist, PreUpdate]
+
+    /**Вызывается в BlamableListener*/
     public function updateModifier(): void
     {
-        if ($this->user) {
-            if (!isset($this->user_created)) {
-                $this->user_created = $this->user;
+        if (null !== $this->getUser()) {
+            $user = $this->getUser();
+            if (null === $this->getUserCreated()) {
+                $this->setUserCreated($user);
             }
 
-            $this->user_modified = $this->user;
+            $this->setUserModified($user);
         }
     }
 
@@ -53,7 +61,6 @@ trait HasModifier
 
     public function setUserCreated(?UserInterface $user_created): self
     {
-        $this->user = $user_created;
         $this->user_created = $user_created;
 
         return $this;
@@ -66,7 +73,6 @@ trait HasModifier
 
     public function setUserModified(?UserInterface $user_modified): self
     {
-        $this->user = $user_modified;
         $this->user_modified = $user_modified;
 
         return $this;
