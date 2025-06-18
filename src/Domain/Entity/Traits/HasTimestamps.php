@@ -6,15 +6,18 @@ namespace AcademCity\CoreBundle\Domain\Entity\Traits;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 /**Трейт для подключения к сущности и создания полей
  * $time_created и $time_modified
  * */
 trait HasTimestamps
 {
+    #[Groups(['timestamps:read'])]
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $time_created = null;
 
+    #[Groups(['timestamps:read'])]
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $time_modified = null;
 
