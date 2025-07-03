@@ -3,12 +3,14 @@
 namespace AcademCity\CoreBundle\Domain\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 /**
  * "Стандартное поле" delete для Entity.
  */
 trait ActiveEntityTrait
 {
+    #[Groups(['active:read', 'active:write'])]
     #[ORM\Column(options: ['default' => true])]
     private bool $active = true;
 
