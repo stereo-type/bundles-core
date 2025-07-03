@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
 /**
- * "Стандартное поле" delete для Entity.
+ * "Стандартное поле" active для Entity.
  */
 trait ActiveEntityTrait
 {
