@@ -15,5 +15,8 @@ framework:
         #app: cache.adapter.apcu
 
         # Namespaced pools use the above "app" backend by default
-        #pools:
-            #my.dedicated.cache: null
+        pools:
+            #           Кеш завязанный на сессию, работать через src/Features/Core/Application/Service/SessionCacheService.php
+            app.session_cache:
+                adapter: cache.app
+                default_lifetime: 28800
