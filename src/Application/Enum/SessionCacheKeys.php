@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Application\Enum;
+namespace Slcorp\CoreBundle\Application\Enum;
 
 enum SessionCacheKeys: string
 {

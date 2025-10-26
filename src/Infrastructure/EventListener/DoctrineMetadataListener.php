@@ -7,9 +7,9 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Infrastructure\EventListener;
+namespace Slcorp\CoreBundle\Infrastructure\EventListener;
 
-use AcademCity\CoreBundle\Domain\Entity\Traits\HasModifier;
+use Slcorp\CoreBundle\Domain\Entity\Traits\HasModifier;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 
 /**

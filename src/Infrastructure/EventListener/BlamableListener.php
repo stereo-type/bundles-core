@@ -1,8 +1,8 @@
 <?php
 
-namespace AcademCity\CoreBundle\Infrastructure\EventListener;
+namespace Slcorp\CoreBundle\Infrastructure\EventListener;
 
-use AcademCity\CoreBundle\Domain\Entity\Traits\HasModifier;
+use Slcorp\CoreBundle\Domain\Entity\Traits\HasModifier;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Bundle\SecurityBundle\Security;

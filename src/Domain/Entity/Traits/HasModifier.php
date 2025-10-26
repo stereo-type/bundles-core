@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Domain\Entity\Traits;
+namespace Slcorp\CoreBundle\Domain\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;

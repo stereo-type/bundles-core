@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Infrastructure\Validator\Constraints;
+namespace Slcorp\CoreBundle\Infrastructure\Validator\Constraints;
 
 #[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_METHOD | \Attribute::IS_REPEATABLE)]
 class MustExist extends \Symfony\Component\Validator\Constraint

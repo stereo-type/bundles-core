@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Infrastructure\Service;
+namespace Slcorp\CoreBundle\Infrastructure\Service;
 
 class UrlBuilder
 {

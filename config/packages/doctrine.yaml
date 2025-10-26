@@ -18,12 +18,12 @@ doctrine:
             Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
         auto_mapping: true
         mappings:
-            AcademCity\CoreBundleDomain:
+            Slcorp\CoreBundleDomain:
                 type: attribute
                 is_bundle: false
                 dir: '%kernel.project_dir%/src/Domain/Entity'
-                prefix: 'AcademCity\CoreBundleDomain\Entity'
-                alias: AcademCity\CoreBundleDomain
+                prefix: 'Slcorp\CoreBundleDomain\Entity'
+                alias: Slcorp\CoreBundleDomain
         controller_resolver:
             auto_mapping: false
 

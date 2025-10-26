@@ -18,8 +18,8 @@
         }
   ]
   ```
-- выполнить команду `composer require academcity/core_bundle`, желательно указать последнюю версию при установке,
-  пример `composer require academcity/core_bundle 1.3.5`
+- выполнить команду `composer require Slcorp/core_bundle`, желательно указать последнюю версию при установке,
+  пример `composer require Slcorp/core_bundle 1.3.5`
 - отчистить кеш `php bin/console cache:clear`
 
 ### 3. ISSUSES

@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Application\Service;
+namespace Slcorp\CoreBundle\Application\Service;
 
-use AcademCity\CoreBundle\Application\Enum\SessionCacheKeys;
+use Slcorp\CoreBundle\Application\Enum\SessionCacheKeys;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\SecurityBundle\Security;

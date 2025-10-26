@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Application\Command;
+namespace Slcorp\CoreBundle\Application\Command;
 
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Component\Console\Command\Command;

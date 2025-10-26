@@ -1,8 +1,8 @@
 <?php
 
-namespace AcademCity\CoreBundle\Infrastructure\EventListener;
+namespace Slcorp\CoreBundle\Infrastructure\EventListener;
 
-use AcademCity\CoreBundle\Domain\Entity\Traits\HasTimestamps;
+use Slcorp\CoreBundle\Domain\Entity\Traits\HasTimestamps;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 

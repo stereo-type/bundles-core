@@ -1,6 +1,6 @@
 <?php
 
-namespace AcademCity\CoreBundle\Domain\Entity\Traits;
+namespace Slcorp\CoreBundle\Domain\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;

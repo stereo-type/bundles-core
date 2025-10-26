@@ -6,17 +6,17 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle;
+namespace Slcorp\CoreBundle;
 
-use AcademCity\CoreBundle\DependencyInjection\AcademCityCoreExtension;
+use Slcorp\CoreBundle\DependencyInjection\SlcorpCoreExtension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class AcademCityCoreBundle extends AbstractBundle
+class SlcorpCoreBundle extends AbstractBundle
 {
     public function getContainerExtension(): ?ExtensionInterface
     {
-        return new AcademCityCoreExtension();
+        return new SlcorpCoreExtension();
     }
 
 

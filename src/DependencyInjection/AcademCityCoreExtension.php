@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\DependencyInjection;
+namespace Slcorp\CoreBundle\DependencyInjection;
 
 use InvalidArgumentException;
 use Symfony\Component\Config\FileLocator;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Filesystem\Filesystem;
 
-class AcademCityCoreExtension extends Extension
+class SlcorpCoreExtension extends Extension
 {
     private const PERMISSIONS_MASK = 0755;
 

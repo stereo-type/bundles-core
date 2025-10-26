@@ -1,6 +1,6 @@
 <?php
 
-namespace AcademCity\CoreBundle;
+namespace Slcorp\CoreBundle;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;

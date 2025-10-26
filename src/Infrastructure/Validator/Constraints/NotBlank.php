@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace AcademCity\CoreBundle\Infrastructure\Validator\Constraints;
+namespace Slcorp\CoreBundle\Infrastructure\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraints\NotBlank as CoreNotBlank;
 
