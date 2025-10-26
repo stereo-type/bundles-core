@@ -32,7 +32,7 @@ class SlcorpCoreExtension extends Extension
         $filesystem = new Filesystem();
         $projectRoot = $container->getParameter('kernel.project_dir');
         $subDir = DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'packages';
-        $filename = 'academ_city_core.yaml';
+        $filename = 'slcorp_core.yaml';
         $projectConfigDir = $projectRoot . $subDir;
         $targetConfigFile = $projectConfigDir . DIRECTORY_SEPARATOR . $filename;
         $bundleConfigFile = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Resources' . $subDir . DIRECTORY_SEPARATOR . $filename;
@@ -46,6 +46,6 @@ class SlcorpCoreExtension extends Extension
 
         $loader = new YamlFileLoader($container, new FileLocator(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'config'));
         $loader->load('services.yaml');
-        $container->setParameter('academ_city_core.user_class', $config['user_class']);
+        $container->setParameter('slcorp_core.user_class', $config['user_class']);
     }
 }

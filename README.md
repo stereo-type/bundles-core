@@ -14,19 +14,19 @@
   "repositories": [
         {
             "type": "vcs",
-            "url": "https://oauth2:JRB8vueyHk5JnBfUjNsb@gitlab.dev-u.ru/bundles/core_bundle.git"
+            "url": "https://github.com/stereo-type/bundles-core.git"
         }
   ]
   ```
-- выполнить команду `composer require Slcorp/core_bundle`, желательно указать последнюю версию при установке,
-  пример `composer require Slcorp/core_bundle 1.3.5`
+- выполнить команду `composer require slcorp/core_bundle`, желательно указать последнюю версию при установке,
+  пример `composer require slcorp/core_bundle 2.0.2`
 - отчистить кеш `php bin/console cache:clear`
 
 ### 3. ISSUSES
 
-после установки бандла произойдет копирование config/packages/academ_city_core.yaml в основной проект,
+после установки бандла произойдет копирование config/packages/slcorp_core.yaml в основной проект,
 копирование видимо происходит ассинхронно, несмотря на вызов перед загрузкой конфигов, поэтому может быть получена
-ошибка ` The child config "user_class" under "academ_city_core" must be configured.`
+ошибка ` The child config "user_class" under "slcorp_city_core" must be configured.`
 Повторное выполнение отчистки кеша решит проблему `php bin/console cache:clear`
 
 ### Команды
