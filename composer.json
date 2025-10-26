@@ -1,6 +1,6 @@
 {
   "name": "slcorp/core-bundle",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "symfony-bundle",
   "minimum-stability": "stable",
   "stability": "stable",
@@ -20,9 +20,9 @@
   ],
   "require": {
     "php": ">=8.4",
-    "doctrine/dbal": "^4.2.1",
-    "doctrine/doctrine-bundle": "^2.13.1",
-    "doctrine/orm": "^3.3",
+    "doctrine/dbal": "^4.3.4",
+    "doctrine/doctrine-bundle": "^3.0",
+    "doctrine/orm": "^3.5.2",
     "symfony/framework-bundle": "^7.3",
     "symfony/runtime": "^7.3",
     "symfony/yaml": "^7.3",
