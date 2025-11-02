@@ -122,7 +122,7 @@ trait CommandTrait
 
             return $result;
         } catch (\Throwable $e) {
-            $this->error_log($e);
+            $this->error(sprintf('error: %s, file: %s, line: %d', $e->getMessage(), $e->getFile(), $e->getLine()));
 
             return Command::FAILURE;
         }
