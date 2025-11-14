@@ -37,7 +37,7 @@ trait RepositoryTrait
         return true;
     }
 
-    public function get(int $id): object
+    public function get(mixed $id): object
     {
         $channel = $this->find($id);
         if (!$channel) {
