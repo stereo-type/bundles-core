@@ -7,7 +7,7 @@ namespace Slcorp\CoreBundle\Domain\Repository;
 use Doctrine\DBAL\LockMode;
 
 /**
- * @template T
+ * @template T of object
  */
 interface RepositoryInterface
 {

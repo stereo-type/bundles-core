@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityNotFoundException;
 
 /**
  * Трейт для общих действий к репозиторию {@see ServiceEntityRepository}.
- * @template T
+ * @template T of object
  */
 trait ByNameTrait
 {
