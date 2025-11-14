@@ -16,15 +16,15 @@ use Doctrine\ORM\EntityNotFoundException;
  */
 trait RepositoryTrait
 {
-    public function save(object $object, bool $flush = true): object
+    public function save(object $entity, bool $flush = true): object
     {
-        $this->getEntityManager()->persist($object);
+        $this->getEntityManager()->persist($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
 
-        return $object;
+        return $entity;
     }
 
     public function delete(object $entity, bool $flush = true): bool
