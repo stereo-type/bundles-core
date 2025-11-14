@@ -8,8 +8,8 @@ use Doctrine\DBAL\LockMode;
 
 interface RepositoryInterface
 {
-    public function save(object $file, bool $flush = true): ?int;
-    public function delete(object $file, bool $flush = true): void;
+    public function save(object $object, bool $flush = true): object;
+    public function delete(object $object, bool $flush = true): void;
 
     public function find(mixed $id, LockMode|int|null $lockMode = null, int|null $lockVersion = null): ?object;
     public function get(mixed $id): object;
