@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slcorp\CoreBundle\Domain\Repository\Traits;
+namespace Slcorp\CoreBundle\Domain\Repository;
 
 use Doctrine\DBAL\LockMode;
 
