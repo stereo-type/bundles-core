@@ -1,6 +1,6 @@
 {
   "name": "slcorp/core-bundle",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "type": "symfony-bundle",
   "minimum-stability": "stable",
   "stability": "stable",
