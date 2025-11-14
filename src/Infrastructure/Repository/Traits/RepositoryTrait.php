@@ -13,9 +13,14 @@ use Doctrine\ORM\EntityNotFoundException;
 
 /**
  * Трейт для общих действий к репозиторию {@see ServiceEntityRepository}.
+ * @template T
  */
 trait RepositoryTrait
 {
+    /**
+     * @param T $entity
+     * @return  T
+     */
     public function save(object $entity, bool $flush = true): object
     {
         $this->getEntityManager()->persist($entity);
@@ -27,6 +32,10 @@ trait RepositoryTrait
         return $entity;
     }
 
+    /**
+     * @param T $entity
+     * @return  T
+     */
     public function delete(object $entity, bool $flush = true): bool
     {
         $this->getEntityManager()->remove($entity);
@@ -37,6 +46,9 @@ trait RepositoryTrait
         return true;
     }
 
+    /**
+     * @return  T
+     */
     public function get(mixed $id): object
     {
         $channel = $this->find($id);

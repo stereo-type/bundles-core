@@ -13,14 +13,21 @@ use Doctrine\ORM\EntityNotFoundException;
 
 /**
  * Трейт для общих действий к репозиторию {@see ServiceEntityRepository}.
+ * @template T
  */
 trait ByNameTrait
 {
+    /**
+     * @return  T|null
+     */
     public function findByName(string $name): ?object
     {
         return $this->findOneBy(['name' => $name]);
     }
 
+    /**
+     * @return  T
+     */
     public function getByName(string $name): object
     {
         $channel = $this->findByName($name);

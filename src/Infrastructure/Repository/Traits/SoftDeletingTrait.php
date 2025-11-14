@@ -13,9 +13,14 @@ use Doctrine\Common\Collections\Criteria;
 
 /**
  * Трейт для общих действий к репозиторию {@see ServiceEntityRepository}.
+ * @template T
  */
 trait SoftDeletingTrait
 {
+    /**
+     * @param T $entity
+     * @return  bool
+     */
     public function softDelete(object $entity, bool $flush = true): bool
     {
         if (method_exists($entity, 'setDelete')) {
@@ -32,6 +37,10 @@ trait SoftDeletingTrait
         return true;
     }
 
+    /**
+     * @param T $entity
+     * @return  bool
+     */
     public function softRestore(object $entity, bool $flush = true): bool
     {
         if (method_exists($entity, 'setDelete')) {
@@ -48,6 +57,9 @@ trait SoftDeletingTrait
         return true;
     }
 
+    /**
+     * @return  T|null
+     */
     public function findDeleted(int $id): ?object
     {
         $this->getEntityManager()->getFilters()->disable('soft_delete_filter');
@@ -60,6 +72,9 @@ trait SoftDeletingTrait
         return $entity;
     }
 
+    /**
+     * @return  T|null
+     */
     public function findDeletedBy(array $criteria): ?object
     {
         $this->getEntityManager()->getFilters()->disable('soft_delete_filter');
@@ -78,6 +93,9 @@ trait SoftDeletingTrait
         return null;
     }
 
+    /**
+     * @return  T[]
+     */
     public function findDeletedList(array $criteria): array
     {
         $result = [];
@@ -94,6 +112,9 @@ trait SoftDeletingTrait
         return $result;
     }
 
+    /**
+     * @return  T|null
+     */
     public function matchingDeletedBy(Criteria $criteria): ?object
     {
         $this->getEntityManager()->getFilters()->disable('soft_delete_filter');
