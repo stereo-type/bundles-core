@@ -14,24 +14,26 @@ use Symfony\Component\Serializer\Attribute\Groups;
 trait HasTimestamps
 {
     #[Groups(['timestamps:read'])]
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $time_created = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: false)]
+    private \DateTimeInterface $time_created;
 
     #[Groups(['timestamps:read'])]
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $time_modified = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
+    private \DateTimeInterface $time_modified;
 
     /**Вызывается в TimeModifiedListener*/
-    public function updateTimestamps(): void
+    public function prePersist(): void
     {
-        if (null === $this->getTimeCreated()) {
-            $this->setTimeCreated(new \DateTime());
-        }
-
+        $this->setTimeCreated(new \DateTime());
         $this->setTimeModified(new \DateTime());
     }
 
-    public function getTimeCreated(): ?\DateTimeInterface
+    public function preUpdate(): void
+    {
+        $this->setTimeModified(new \DateTime());
+    }
+
+    public function getTimeCreated(): \DateTimeInterface
     {
         return $this->time_created;
     }
@@ -43,7 +45,7 @@ trait HasTimestamps
         return $this;
     }
 
-    public function getTimeModified(): ?\DateTimeInterface
+    public function getTimeModified(): \DateTimeInterface
     {
         return $this->time_modified;
     }

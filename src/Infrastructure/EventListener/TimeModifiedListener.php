@@ -14,7 +14,7 @@ class TimeModifiedListener
 
         if (in_array(HasTimestamps::class, class_uses($entity), true)) {
             /**@var HasTimestamps $entity */
-            $entity->updateTimestamps();
+            $entity->prePersist();
         }
     }
 
@@ -24,7 +24,7 @@ class TimeModifiedListener
 
         if (in_array(HasTimestamps::class, class_uses($entity), true)) {
             /**@var HasTimestamps $entity */
-            $entity->updateTimestamps();
+            $entity->preUpdate();
         }
     }
 }

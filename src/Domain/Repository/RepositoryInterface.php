@@ -24,7 +24,6 @@ interface RepositoryInterface
     public function delete(object $entity, bool $flush = true): bool;
 
     /**
-     * @param T $entity
      * @return  T|null
      */
     public function find(mixed $id, LockMode|int|null $lockMode = null, int|null $lockVersion = null): ?object;
